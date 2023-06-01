@@ -1,0 +1,19 @@
+**creating jewlery store database
+
+
+CREATE TABLE jewlery (id integer primary key, aisle integer, material text, price integer, jewlery text);
+
+INSERT INTO jewlery values
+(1,5,'crystal',7,'necklaces'),
+(2,3,'metal',10,'rings'),
+(3,2,'beads',5,'bracelets'),
+(4,1,'gold',14,'earrings'),
+(5,4,'cotton',8,'anklets')
+;
+
+-----displaying jewlery ordered by price----
+SELECT * FROM jewlery
+WHERE price <=14
+ORDER BY price desc;
+
+SELECT SUM(price) FROM jewlery;
