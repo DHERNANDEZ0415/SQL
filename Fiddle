@@ -64,21 +64,26 @@ SELECT * FROM "netflix_people" LIMIT 5
 
 select * from "netflix_titles_info" LIMIT 5
 
+#1.How many movie titles are there in the database? (movies only, not tv shows) 
 select count(*) from "netflix_titles_info"
 where type='Movie';
 
+#2. When was the most recent batch of tv shows and/or movies added to the database?
 select max(date(date_added))
 from "netflix_titles_info";
 
+#3.List all the movies and tv shows in alphabetical order. 
 select title from "netflix_titles_info"
 order by title desc;
 
+#4. Who was the Director for the movie The Starling?
 select director 
 from "netflix_titles_info" titles
 left join "netflix_people" people
 on titles.show_id=people.show_id
 where titles.title= 'The Starling';
 
+#5. What is the oldest movie in the database and what year was it made?
 select title, release_year
 from "netflix_titles_info"
 where type= 'Movie'
