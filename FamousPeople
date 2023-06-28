@@ -1,0 +1,90 @@
+# This table was created on Khan Academy based off Moviestars 
+
+/* Create table about the people and what they do here */
+CREATE TABLE MOVIESTARS (id INTEGER PRIMARY KEY,
+first_name TEXT,
+last_name TEXT,
+birthdate TEXT,
+popularmovie TEXT);
+
+INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Will", "Smith", "09-25-1968", "Men In Black");
+ INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Zoe", "Saldana", "06-19-1978", "Avatar");
+ INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Denzel", "Washington", "12-28-1954", "Man on Fire");
+ INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Julia", "Roberts", "10-28-1967", "Pretty Woman"); 
+ INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Timothee", "Chalamet", "12-27-1995", "Dune");
+ INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES( "Jennifer", "Lawrence", "08-15-1990", "The Hunger Games");
+ INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Margot", "Robbie", "07-02-1990", "Barbie");
+  INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Johnny", "Depp", "06-09-1963","Edward Scissorhands");
+  INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Adam", "Sandler", "09-09-1966", "Waterboy");
+  INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Brad","Pitt", "12-18-1963", "Fight Club");
+  INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Scarlett","Johanssan", "11-22-1984", "Black Widow");
+  INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Jessica", "Chastain", "03-24-1977", "Intersellar");
+  INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Kevin", "Hart", "07-06-1979", "Jumanji");
+  INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Ice", "Cube", "06-15-1969", "Friday");
+  INSERT INTO moviestars (first_name, last_name, birthdate, popularmovie)
+ VALUES ("Paul","Rudd","04-06-1969","Ant-Man");
+ 
+CREATE TABLE awards ( id integer primary key, person_id integer, name text);
+ 
+ INSERT into awards (Person_id, name)
+ VALUES (1, "Oscars");
+ INSERT into awards (Person_id, name)
+ VALUES (2, "Teen Choice");
+ INSERT into awards (Person_id, name)
+ VALUES (3, "Oscars & Golden Globes");
+ INSERT into awards (Person_id, name)
+ VALUES (4, "Oscars & Golden Globes");
+ INSERT into awards (Person_id, name)
+ VALUES (5, "Independent");
+ INSERT into awards (Person_id, name)
+ VALUES (6, "Oscars, Teen Choice & Golden Globes");
+ INSERT into awards (Person_id, name)
+ VALUES (7, "Oscars");
+ INSERT into awards (Person_id, name)
+ VALUES (8, "Golden Globes & Teen Choice");
+ INSERT into awards (Person_id, name)
+ VALUES (9, "Teen Choice & MTV");
+ INSERT into awards (Person_id, name)
+ VALUES (10, "Oscars & Golden Globes");
+ INSERT into awards (Person_id, name)
+ VALUES (11, "Independent & MTV");
+ INSERT into awards (Person_id, name)
+ VALUES (12, "Oscars");
+ INSERT into awards (Person_id, name)
+ VALUES (13, "People's Choice");
+ INSERT into awards (Person_id, name)
+ VALUES (14, "NAACP");
+ INSERT into awards (Person_id, name)
+ VALUES (15, "Critics' Choice");
+ 
+ 
+SELECT moviestars.first_name, moviestars.last_name, awards.name as awards from moviestars 
+join awards
+on moviestars.id= awards.person_id;
+
+Select moviestars.first_name, moviestars.last_name, moviestars.popularmovie from moviestars
+left outer join awards
+on moviestars.id = awards.person_id;
+
+SELECT a.popularmovie, b.popularmovie from awards
+join moviestars a
+on awards.person_id = a.id
+join moviestars b
+on awards.person_id = b.id;
+ 
+
+
