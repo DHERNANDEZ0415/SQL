@@ -1,0 +1,57 @@
+# In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data.
+
+#1. how many orders were placed in January?
+Select * FROM BIT_DB.customers LIMIT 20 
+
+#2. How many of those orders were for an iPhone?
+Select count(orderid)
+from bit_db.jansales
+where length(orderid)=6
+AND orderid <> 'Order ID'
+
+#3.Select the customer account numbers for all the orders that were placed in February.
+Select count(orderid)
+from bit_db.jansales
+where Product='iPhone'
+and length(orderid)=6
+AND orderid <> 'Order ID';
+
+#4.Which product was the cheapest one sold in January, and what was the price?
+select distinct acctnum
+from bit_db.customers cust
+INNER JOIN BIT_DB.FebSales Feb
+ON cust.order_id=FEB.orderid
+where length(orderid)= 6
+and orderid <> 'Order ID';
+
+#5.What is the total revenue for each product sold in January?
+select distinct Product, price
+from bit_db.JanSales
+order by price ASC Limit 1;
+
+
+
+select sum(quantity)*price as revenue,product
+from bit_db.JanSales
+Group by product;
+
+select orderid,product,price
+from bit_db.JanSales;
+
+#6.Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+select sum(Quantity), Product,
+sum(quantity)*price as revenue
+from bit_db.FebSales
+where location= '548 Lincoln St, Seattle, WA 98101'
+group by product;
+
+
+#7.How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
+select count(cust.acctnum),
+avg(quantity)*price as spent
+from bit_db.FebSales Feb
+left join bit_db.customers cust
+on FEB.orderid=cust.order_id
+where Feb.Quantity>2
+and length(orderid)=6
+and orderid<> 'Order ID';
